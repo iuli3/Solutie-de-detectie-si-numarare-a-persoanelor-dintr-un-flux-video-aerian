@@ -23,6 +23,38 @@ Real-time GPU-accelerated computer vision server. Multi-camera person detection,
 
 ## Quick Start
 
+### Ce se descarca din Git
+
+Repository-ul foloseste Git LFS pentru modelele mari din `processing_server/models/`.
+
+La clonare se descarca:
+
+- fisierele sursa Python (`.py`);
+- fisierele de configurare exemplu si documentatia;
+- modelele versionate prin Git LFS (`.pt`, `.pth`, `.engine`).
+
+Nu se descarca si nu sunt versionate:
+
+- fisierul local `.env`;
+- mediile virtuale Python (`venv/`, `venv_*/`);
+- `__pycache__/` si cache-uri de testare;
+- upload-uri, rezultate generate si loguri runtime.
+
+Flux minim dupa clonare:
+
+```bash
+git clone <repo-url>
+cd <repo-folder>/processing_server
+git lfs pull
+
+pip install -r requirements.txt
+cp .env.example .env
+# editeaza .env pentru DB, MinIO si GPU
+
+cd core
+python processing_server.py
+```
+
 ### 1. Prerequisites
 
 - Python 3.10+

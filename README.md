@@ -158,6 +158,21 @@ cd Solutie-de-detectie-si-numarare-a-persoanelor-dintr-un-flux-video-aerian
 git lfs pull
 ```
 
+La clonare se descarca:
+
+- codul sursa pentru frontend, backend si processing server;
+- fisierele de configurare exemplu (`.env.example`);
+- modelele ML din `processing_server/models/`, prin Git LFS;
+- documentatia si fisierele Docker.
+
+Nu se descarca si nu sunt versionate:
+
+- fisierele locale `.env`;
+- mediile virtuale Python (`venv/`, `venv_*/`);
+- `node_modules/`;
+- `__pycache__/` si cache-uri de testare;
+- upload-uri, rezultate generate si loguri runtime.
+
 Verificare modele:
 
 ```bash
@@ -257,6 +272,24 @@ Pentru pornirea backend-ului si frontend-ului tot prin Docker:
 
 ```bash
 docker compose up -d --build
+```
+
+Pentru instalari mai vechi, unde este disponibil `docker-compose` v1:
+
+```bash
+docker-compose -f docker-compose.yml up -d --build
+```
+
+Daca `docker-compose` v1 da eroarea `KeyError: 'ContainerConfig'`, folositi Docker Compose v2:
+
+```bash
+docker compose up -d --build
+```
+
+Verificare containere:
+
+```bash
+docker compose ps
 ```
 
 Atentie: in `docker-compose.yml`, variabila `PROCESSING_SERVER_URL` si argumentul `VITE_API_URL` pot contine IP-uri locale din mediul de dezvoltare. Pentru alta masina, actualizati aceste valori astfel incat backend-ul sa poata ajunge la serverul de procesare, iar frontend-ul sa poata ajunge la backend.
