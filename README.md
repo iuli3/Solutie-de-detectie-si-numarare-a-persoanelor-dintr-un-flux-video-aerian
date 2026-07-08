@@ -1,10 +1,7 @@
 # Solutie de detectie si numarare a persoanelor dintr-un flux video aerian
 
 Proiect de licenta
-
-Profesor coordonator: de completat
-
-Autor: Iuliana Turcanu
+Student: Iuliana Turcanu
 
 ## Descriere generala
 
