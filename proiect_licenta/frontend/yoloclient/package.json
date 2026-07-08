@@ -1,0 +1,41 @@
+{
+  "name": "yoloclient",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test:e2e": "npm run test:e2e:ui && npm run test:e2e:app",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:ui": "playwright test e2e/auth-ui.spec.js",
+    "test:e2e:app": "playwright test e2e/auth-dashboard.spec.js && playwright test e2e/protected-route.spec.js && playwright test e2e/detection.spec.js && playwright test e2e/cluster-upload.spec.js"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "flowbite": "^3.1.2",
+    "lucide-react": "^0.563.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.13.0",
+    "socket.io-client": "^4.8.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react-swc": "^4.2.1",
+    "autoprefixer": "^10.4.22",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18",
+    "vite": "^7.2.2",
+    "@playwright/test": "^1.57.0"
+  }
+}

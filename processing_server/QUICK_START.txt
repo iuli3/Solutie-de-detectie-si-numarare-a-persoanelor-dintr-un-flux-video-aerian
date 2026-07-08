@@ -1,0 +1,105 @@
+════════════════════════════════════════════════════════════════
+PROCESSING SERVER - QUICK START FOR NEW USERS
+════════════════════════════════════════════════════════════════
+
+PREREQUISITES (before you start):
+  - Python 3.10 or higher
+  - NVIDIA GPU + CUDA 12.x
+  - ~20GB free disk space
+  - PostgreSQL 13+ (optional, for tracking)
+  - MinIO/S3 server (optional, for video storage)
+
+════════════════════════════════════════════════════════════════
+STEP 1: Clone Repository
+════════════════════════════════════════════════════════════════
+
+  git clone <repo-url> processing_server
+  cd processing_server
+
+════════════════════════════════════════════════════════════════
+STEP 2: Create Virtual Environment
+════════════════════════════════════════════════════════════════
+
+  # Using venv (Linux/Mac)
+  python3 -m venv venv
+  source venv/bin/activate
+
+  # Using venv (Windows)
+  python -m venv venv
+  venv\Scripts\activate.bat
+
+  # Using conda
+  conda create -n processing_server python=3.10
+  conda activate processing_server
+
+════════════════════════════════════════════════════════════════
+STEP 3: Install Dependencies (15-20 minutes)
+════════════════════════════════════════════════════════════════
+
+  pip install -r requirements.txt
+
+This installs: Flask, PyTorch, YOLO, TransReID, DM-Count, PostgreSQL, 
+MinIO, and all dependencies (~15-20GB, mostly PyTorch).
+
+════════════════════════════════════════════════════════════════
+STEP 4: Configure Environment
+════════════════════════════════════════════════════════════════
+
+  cp .env.example .env
+  # Edit .env with your DB/MinIO credentials and GPU setup
+
+Key settings:
+  - CUDA_VISIBLE_DEVICES=0,1,2          (your GPU IDs)
+  - DATABASE_URL=postgresql://...       (your DB)
+  - MINIO_ENDPOINT=host:9000            (your MinIO)
+  - MODEL_PATH=models/...               (model file)
+
+════════════════════════════════════════════════════════════════
+STEP 5: Start Server
+════════════════════════════════════════════════════════════════
+
+  cd core/
+  python processing_server.py
+
+Expected output:
+  [INIT] CUDA_VISIBLE_DEVICES=0,1,2
+  [INIT] Model YOLO incarcat pe cuda:2 ✓
+  [INIT] Ambele modele DM-Count incarcate si cached. ✓
+  Processing Server - Port: 5001 ✓
+  * Running on http://127.0.0.1:5001
+
+════════════════════════════════════════════════════════════════
+TROUBLESHOOTING
+════════════════════════════════════════════════════════════════
+
+Q: "ModuleNotFoundError: No module named 'torch'"
+A: Virtual environment not activated. Run: source venv/bin/activate
+
+Q: "No CUDA device found"
+A: Check GPU: nvidia-smi
+   Check env: echo $CUDA_VISIBLE_DEVICES
+
+Q: "Model not found: models/yolo11m_..."
+A: Verify models/ folder exists in processing_server/
+   Check MODEL_PATH in .env
+
+Q: "Address already in use (port 5001)"
+A: Server already running, or port in use
+   Kill process: lsof -i :5001 | kill -9 <PID>
+   Or change port in .env: PROCESSING_SERVER_PORT=5002
+
+Q: "Database connection error"
+A: Check DATABASE_URL in .env
+   Verify PostgreSQL is running and accessible
+
+════════════════════════════════════════════════════════════════
+DOCUMENTATION
+════════════════════════════════════════════════════════════════
+
+- README.md       Full project overview
+- SETUP.md        Detailed setup guide
+- .env.example    All configuration options
+
+════════════════════════════════════════════════════════════════
+Done! Server is ready for inference.
+════════════════════════════════════════════════════════════════

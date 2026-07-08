@@ -1,0 +1,54 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+venv_*/
+env/
+ENV/
+
+# Python packaging and test output
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Node / frontend
+node_modules/
+dist/
+dist-ssr/
+coverage/
+playwright-report/
+test-results/
+
+# Runtime data
+uploads/
+results/
+runs/
+*.log
+*.db
+*.sqlite
+*.sqlite3
+
+# Local tooling
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Local backups
+*.backup

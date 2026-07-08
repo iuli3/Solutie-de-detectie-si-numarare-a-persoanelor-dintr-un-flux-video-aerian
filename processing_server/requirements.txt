@@ -1,0 +1,47 @@
+# Processing Server Requirements
+# Python 3.10+
+# Install: pip install -r requirements.txt
+#
+# NOTE: nvidia-tensorrt se instaleaza automat de ultralytics daca e necesar.
+# Installation size: ~15-20GB (PyTorch 2.5GB)
+# Installation time: 15-20 minutes
+
+# ── Core Web Framework ───────────────────────────────────────────────────────
+Flask==3.0.0
+flask-socketio==5.3.5
+flask-sqlalchemy==3.1.1
+flask-jwt-extended==4.5.3
+flask-bcrypt==1.0.1
+python-socketio==5.10.0
+python-engineio==4.8.0
+Werkzeug==3.0.1
+
+# ── Environment & Config ─────────────────────────────────────────────────────
+python-dotenv==1.0.0
+
+# ── Database ─────────────────────────────────────────────────────────────────
+SQLAlchemy==2.0.23
+psycopg2-binary==2.9.9
+
+# ── Storage (MinIO S3) ───────────────────────────────────────────────────────
+minio==7.2.0
+
+# ── Deep Learning & Computer Vision ──────────────────────────────────────────
+torch==2.1.2
+torchvision==0.16.2
+timm==0.9.10
+ultralytics==8.0.232
+opencv-python==4.8.1.78
+numpy==1.24.3
+Pillow==10.1.0
+scipy==1.11.4
+
+# ── Video Processing ────────────────────────────────────────────────────────
+ffmpeg-python==0.2.0
+
+# ── Utilities ───────────────────────────────────────────────────────────────
+rich==13.7.0
+
+# ── Development & Testing ────────────────────────────────────────────────────
+pytest==7.4.3
+pytest-cov==4.1.0

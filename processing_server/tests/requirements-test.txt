@@ -1,0 +1,16 @@
+# Testing dependencies for processing_server
+
+# Core testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-xdist>=3.0.0
+pytest-timeout>=2.1.0
+
+# Mocking and fixtures
+pytest-mock>=3.10.0
+
+# Optional: Test watching
+pytest-watch>=4.2.0
+
+# Optional: Better assertion messages
+pytest-sugar>=0.9.6

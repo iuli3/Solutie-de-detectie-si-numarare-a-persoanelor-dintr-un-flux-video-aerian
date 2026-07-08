@@ -1,0 +1,10 @@
+[run]
+omit =
+    venv/*
+    tests/*
+    migrate_*.py
+    sitecustomize.py
+
+[report]
+show_missing = True
+skip_empty = True
